@@ -35,17 +35,18 @@ def get_faiss():
     return FAISS.load_local("faiss_index", embeddings)
 
 
-
-
-def fs_chain(question):
-    """
-    returns a question answer chain for faiss vectordb
-    """
-
+def letter_chain(question):
+    """returns a question answer chain for pinecone vectordb"""
+    
     docsearch = get_faiss()
+    retreiver = docsearch.as_retriever(#
+        #search_type="similarity", #"similarity", "mmr"
+        search_kwargs={"k":3}
+    )
     qa_chain = RetrievalQA.from_chain_type(llm, 
-                                           retriever=docsearch.as_retriever(),
-                                           chain_type_kwargs={"prompt": FS_PROMPT})
+                                            retriever=retreiver,
+                                           chain_type="stuff", #"stuff", "map_reduce","refine", "map_rerank"
+                                           return_source_documents=True,
+                                           #chain_type_kwargs={"prompt": LETTER_PROMPT}
+                                          )
     return qa_chain({"query": question})
-
-
