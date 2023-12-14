@@ -17,16 +17,7 @@ password=st.secrets["streamlit_password"]
 
 # adding this to test out caching
 st.cache_data(ttl=86400)
-
-    
-def fs_chain(str_input):
-    """
-    performs qa capability for a question using sql vector db store
-    the prompts.fs_chain is used but with caching
-    """
-    output = prompts.fs_chain(str_input)
-    type(output)
-    return output
+   
 
 # adding this to test out caching
 st.cache_data(ttl=86400)
