@@ -56,12 +56,17 @@ if authenticate_user():
     query = st.chat_input("Enter your question:")
     st.markdown("""
 
-    AI assisted solution to extract information from your company's annual reports from 2019 to 2022. Post your queries in the textbox at bottom of this page.
-          
-    **Few sample queries for reference are:**
-  
+    AI assisted solution to extract information from Jade Global reports on:
+    - SAP services
+    - Jade Global DQA 
+    - Microsoft Practice Offerings
+    - Healthcare And Life Sciences 360°
+    - Oracle Cloud Services
+    - Oracle Analytics Cloud Services
 
-    
+    Post your queries in the textbox at bottom of this page.
+          
+
     """)
     
     # Create a text input to edit the selected question
